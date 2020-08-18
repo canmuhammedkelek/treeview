@@ -628,4 +628,4 @@ var arr = [{
         return o[0].children;
     }(arr);
 
-document.write('<pre>' + JSON.stringify(tree, 0, 4) + '</pre>');
+console.log(JSON.stringify(tree, 0, 4));
