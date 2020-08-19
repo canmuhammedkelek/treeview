@@ -599,16 +599,15 @@ var arr = [{
         "Name": "Bryar"
     }],
     tree = function(array) {
-
-        function iterGet(o) {
-            if (Array.isArray(o.children)) {
-                o.children.forEach(iterGet);
-            }
-        }
         var o = {
             ID: 0
         }
 
+        function arrGet(o) {
+            if (Array.isArray(o.children)) {
+                o.children.forEach(arrGet);
+            }
+        }
         array.forEach(function(a) {
             o[a.ID] = o[a.ID] || {
                 ID: a.ID,
@@ -624,8 +623,7 @@ var arr = [{
             o[a.parentID].children = o[a.parentID].children || [];
             o[a.parentID].children.push(o[a.ID]);
         });
-        iterGet(o[0]);
+        arrGet(o[0]);
         return o[0].children;
     }(arr);
-
-console.log(JSON.stringify(tree, 0, 4));
+console.log(tree);
