@@ -603,13 +603,25 @@ const arr_tree = arr.reduce((tree, { parentID, ...useful }, _, Origin) => {
     return tree
 }, []);
 
-console.log(`${arr_tree.map(item =>{
+function datalast(item) {
+
+    var child_text = "";
+
     return `
-    <div class="bord">
-    <p>İsim : ${item.Name}</p>
-    <p>Telefon : ${item.Phone}</p>
-    <p>Şehir : ${item.City}</p>
-    Child : ${item.children}
+    <div class="">
+    <h5 >ID: ${item.ID}</h5>
+    <p>İsim: ${item.Name}</p>
+    <p> Telefon: ${item.Phone}</p>
+    <p>Şehir: ${item.City}</p>
+    <p>${child_text}</p>
+    <hr>
     </div>
     `
-}).join(' ')}`)
+}
+const lastdata = `${arr_tree.map(item=>{
+
+ return datalast(item);
+
+}).join(' ')}`
+
+document.write(lastdata);
