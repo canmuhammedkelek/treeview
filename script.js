@@ -603,25 +603,37 @@ const arr_tree = arr.reduce((tree, { parentID, ...useful }, _, Origin) => {
     return tree
 }, []);
 
-function datalast(item) {
+function itemTemplate(item) {
 
-    var child_text = "";
+
+
+    let kk = ''
+    if (item.hasOwnProperty("children")) {
+
+        for (let item_child of item.children) {
+            kk += itemTemplate(item_child);
+        }
+    }
 
     return `
-    <div class="">
-    <h5 >ID: ${item.ID}</h5>
+    <div style="border-left: 2px solid">
+    <h5>${item.ID}</h5>
     <p>İsim: ${item.Name}</p>
     <p> Telefon: ${item.Phone}</p>
     <p>Şehir: ${item.City}</p>
-    <p>${child_text}</p>
-    <hr>
+     <div> 
+     <ul class="a">
+        <li>${kk}</li>
+        </ul>
+    </div>
     </div>
     `
 }
 const lastdata = `${arr_tree.map(item=>{
 
- return datalast(item);
+ return itemTemplate(item);
 
 }).join(' ')}`
 
 document.write(lastdata);
+console.log();
