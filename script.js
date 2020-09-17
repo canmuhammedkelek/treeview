@@ -616,7 +616,7 @@ function itemTemplate(item) {
     }
 
     return `
-    <div style="border-left: 2px solid">
+    <div class="bord">
     <h5>${item.ID}</h5>
     <p>İsim: ${item.Name}</p>
     <p> Telefon: ${item.Phone}</p>
@@ -626,7 +626,7 @@ function itemTemplate(item) {
         <li>${kk}</li>
         </ul>
     </div>
-    </div>
+    </div><br>
     `
 }
 const lastdata = `${arr_tree.map(item=>{
