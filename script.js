@@ -604,14 +604,14 @@ const arr_tree = arr.reduce((tree, { parentID, ...useful }, _, Origin) => {
 }, []);
 
 function itemTemplate(item) {
-    let kk = ''
+    let childdt = ''
     if (item.hasOwnProperty("children")) {
 
         for (let item_child of item.children) {
-            kk += itemTemplate(item_child);
+            childdt += itemTemplate(item_child);
         }
     } else {
-        kk += `<span style="text-decoration:underline">${item.Name} Verisinin Child'ı Bulunamadı !</span>`;
+        childdt += `<span style="text-decoration:underline">${item.Name} Verisinin Child'ı Bulunamadı !</span>`;
     }
 
     return `
@@ -620,7 +620,7 @@ function itemTemplate(item) {
     <li>İsim : ${item.Name}</li>
     <li>Şehir : ${item.City}</li>
     <li>Telefon : ${item.Phone}</li>
-    <ul><p style="font-weight: bold; color:red">Child :</p> ${kk} </ul>
+    <ul><p style="font-weight: bold; color:red">Child :</p> ${childdt} </ul>
     </ul>
     </div><br>
     `
