@@ -604,28 +604,24 @@ const arr_tree = arr.reduce((tree, { parentID, ...useful }, _, Origin) => {
 }, []);
 
 function itemTemplate(item) {
-
-
-
     let kk = ''
     if (item.hasOwnProperty("children")) {
 
         for (let item_child of item.children) {
             kk += itemTemplate(item_child);
         }
+    } else {
+        kk += `<span style="text-decoration:underline">${item.Name} Verisinin Child'ı Bulunamadı !</span>`;
     }
 
     return `
-    <div class="bord">
-    <h5>${item.ID}</h5>
-    <p>İsim: ${item.Name}</p>
-    <p> Telefon: ${item.Phone}</p>
-    <p>Şehir: ${item.City}</p>
-     <div> 
-     <ul class="a">
-        <li>${kk}</li>
-        </ul>
-    </div>
+    <div class="">
+    <ul class="a">
+    <li>İsim : ${item.Name}</li>
+    <li>Şehir : ${item.City}</li>
+    <li>Telefon : ${item.Phone}</li>
+    <ul><p style="font-weight: bold; color:red">Child :</p> ${kk} </ul>
+    </ul>
     </div><br>
     `
 }
@@ -636,4 +632,3 @@ const lastdata = `${arr_tree.map(item=>{
 }).join(' ')}`
 
 document.write(lastdata);
-console.log();
