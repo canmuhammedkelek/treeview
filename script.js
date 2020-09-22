@@ -604,26 +604,23 @@ const arr_tree = arr.reduce((tree, { parentID, ...useful }, _, Origin) => {
 }, []);
 
 function itemTemplate(item) {
-    let childdt = ''
+    let childdt = "";
     if (item.hasOwnProperty("children")) {
-
         for (let item_child of item.children) {
             childdt += itemTemplate(item_child);
         }
-    } else {
-        childdt += `<span style="text-decoration:underline">${item.Name} Verisinin Child'ı Bulunamadı !</span>`;
-    }
+    } else {}
 
     return `
-    <div class="">
-    <ul class="a">
-    <li>İsim : ${item.Name}</li>
-    <li>Şehir : ${item.City}</li>
-    <li>Telefon : ${item.Phone}</li>
-    <ul><p style="font-weight: bold; color:red">Child :</p> ${childdt} </ul>
-    </ul>
-    </div><br>
+    <ul id="myUL">
+        <li onclick="accordion()"> <span class="caret">${item.Name}, ${item.City}, ${item.Phone}</span>
+            <ul>
+                <li class="nested">${childdt}</li>
+            </ul>
+        </li>
+     </ul>
     `
+
 }
 const lastdata = `${arr_tree.map(item=>{
 
@@ -631,4 +628,16 @@ const lastdata = `${arr_tree.map(item=>{
 
 }).join(' ')}`
 
+function accordion() {
+    var toggler = document.getElementsByClassName("caret");
+    var i;
+    console.log(toggler.length);
+    for (i = 0; i < toggler.length; i++) {
+        toggler[i].addEventListener("click", function() {
+            this.parentElement.querySelector(".nested").classList.toggle("active");
+            this.classList.toggle("caret-down");
+        });
+    }
+
+}
 document.write(lastdata);
