@@ -635,7 +635,7 @@ const lastdata = `${arr_tree.map(item => {
 
 }).join(' ')}`
 
-document.write(lastdata);
+document.getElementById('jsdata').innerHTML= lastdata;
 
 
 

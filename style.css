@@ -1,6 +1,7 @@
 body {
     background-color: rgba(0, 0, 0, 0.73);
     color: white;
+    font-family: 'Jura';
   }
   
   details {
@@ -20,13 +21,12 @@ body {
     position: absolute;
     height: 100%;
     top: -8px;
-    border-left: 1px dotted;
   }
   details[open] > summary::before {
     width: 16px;
   }
   details[open] > summary i::before {
-    content: '\f1db';
+    content: '';
   }
   details summary {
     color: #fff;
@@ -42,7 +42,6 @@ body {
     width: 0px;
     top: 16px;
     left: 16px;
-    border-bottom: 1px dotted;
   }
   details summary:focus, details summary:active {
     outline: none;
@@ -73,4 +72,17 @@ body {
     pointer-events: none;
     border-bottom: 1px solid #383838;
     z-index: -1;
+  }
+  footer{
+    text-align: center;
+    color: #fff;
+    padding: 3px;
+  }
+  footer a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+  }
+  .git{
+    color: crimson;
   }
